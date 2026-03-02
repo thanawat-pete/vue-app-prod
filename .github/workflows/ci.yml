@@ -2,7 +2,7 @@ name: 'CI'
 
 on:
   push:
-    branches: 
+    branches:
       - 'main'
 
 # defaults:
@@ -16,11 +16,11 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set nodejs verstion to 18.x
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18.x'
           cache: 'npm'
-      
+
       - run: npm ci
 
       - name: Run lint
@@ -28,7 +28,7 @@ jobs:
 
       - name: Run format
         run: npm run format
-      
+
   unit-test-job:
     runs-on: ubuntu-latest
     needs: lint-job
@@ -40,11 +40,11 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: nodejs version ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      
+
       - run: npm ci
 
       - name: Run Unit Test
