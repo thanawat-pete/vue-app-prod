@@ -3,11 +3,14 @@ name: 'build and deploy docker image'
 on:
   push:
     tags:
-      - 'main'  # Trigger เมื่อ push tag ใด ๆ
+      - 'main' # Trigger เมื่อ push tag ใด ๆ
 
 jobs:
   release-docker-image-job:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -24,7 +27,7 @@ jobs:
       - name: Build and push Docker image
         uses: mr-smithers-excellent/docker-build-push@v6
         with:
-          image: vue-app  # ไม่ต้องใส่ naruapon ซ้ำ
+          image: vue-app # ไม่ต้องใส่ naruapon ซ้ำ
           registry: ghcr.io/thanawat-pete
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
