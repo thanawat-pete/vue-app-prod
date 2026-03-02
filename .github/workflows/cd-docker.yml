@@ -34,7 +34,7 @@ jobs:
         with:
           host: '167.172.92.228' #production url: 159.223.41.181:9003
           username: 'root'
-          password: 'se@NPRU2026'
+          password: 'se@2026NPRU'
           port: '22'
           script: |
             docker logout ghcr.io
