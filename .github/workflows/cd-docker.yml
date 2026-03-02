@@ -3,7 +3,7 @@ name: 'build and deploy production'
 on:
   push:
     tags:
-      - 'xxxx'
+      - 'main'
 
 jobs:
   release-docker-image-job:
@@ -24,7 +24,7 @@ jobs:
     needs: release-docker-image-job
     runs-on: ubuntu-latest
     env:
-      CONTAINER_NAME: 'akenarin2-vue-app'
+      CONTAINER_NAME: 'vue-app-prod'
       DOCKER_IMAGE_URL: 'ghcr.io/${{ github.actor }}/${{ github.event.repository.name }}:${{  github.ref_name }}'
     steps:
     - name: executing remote ssh commands using password
@@ -32,7 +32,7 @@ jobs:
       with:
         host: '159.223.41.181'  #production url: 159.223.41.181:9003
         username: 'root'
-        password: '$Admin_1jj395qu'
+        password: 'se@NPRU2026'
         port: '22'
         script: |
           docker logout ghcr.io

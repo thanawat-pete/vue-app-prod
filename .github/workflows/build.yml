@@ -3,7 +3,7 @@ name: 'build and deploy docker image'
 on:
   push:
     tags:
-      - 'xxxx'  # Trigger เมื่อ push tag ใด ๆ
+      - 'main'  # Trigger เมื่อ push tag ใด ๆ
 
 jobs:
   release-docker-image-job:
